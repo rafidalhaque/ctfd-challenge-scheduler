@@ -38,10 +38,9 @@ Tested against a disposable local CTFd + MariaDB instance:
 - Offsets saved: `0:00`, `0:02`, `1:00`.
 - Immediately after saving: the `0:00` challenge was visible, the other
   two still hidden.
-- Delayed-offset confirmation (waiting past the 2-minute mark to confirm
-  the `0:02` challenge flips on its own while `1:00` stays hidden) is
-  in progress as of this commit; this section will be updated once that
-  finishes.
+- Waited past the 2-minute mark: the `0:02` challenge flipped to visible
+  on its own (via ordinary page-load traffic hitting `before_request`),
+  while the `1:00` challenge correctly remained hidden throughout.
 
 An earlier version's save form was missing CTFd's CSRF nonce hidden
 field entirely — harmless in isolation, but would have made the Save
